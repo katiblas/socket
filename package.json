@@ -1,0 +1,21 @@
+{
+    "name": "esadt-socket",
+    "version": "1.0.0",
+    "description": "Socket para esadt",
+    "main": "index.js",
+    "dependencies": {
+        "bufferutil": "^4.0.3",
+        "eiows": "^3.4.2",
+        "express": "^4.17.1",
+        "nodemon": "^2.0.7",
+        "socket.io": "^4.0.0",
+        "utf-8-validate": "^5.0.4"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "author": "Katherin Valderrama",
+    "license": "ISC"
+}
