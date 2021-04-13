@@ -4,16 +4,15 @@ import http from 'http';
 import { Server } from 'socket.io';
 import path from 'path';
 import cors from 'cors';
-import { Sockets } from './sockets';
 
+import { Sockets } from './sockets';
 import { PORT } from './config';
-import { DefaultEventsMap } from 'socket.io/dist/typed-events';
 
 export class APP {
   app: Express;
   port: number;
   server: http.Server;
-  io: Server<DefaultEventsMap, DefaultEventsMap>;
+  io: Server;
 
   constructor() {
     this.app = express();
@@ -23,7 +22,7 @@ export class APP {
     this.server = http.createServer(this.app);
 
     // Configuraciones de sockets
-    this.io = new Server();
+    this.io = new Server(this.server);
   }
 
   middlewares() {
@@ -34,8 +33,6 @@ export class APP {
     this.app.use(cors());
   }
 
-  // Esta configuración se puede tener aquí o como propieda de clase
-  // depende mucho de lo que necesites
   configurarSockets() {
     new Sockets(this.io);
   }
